@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class MedicalRecord  {
 
 	@Id 
+	@Column(name = "id")
 	private Long id;
     
 	
@@ -55,7 +56,7 @@ public class MedicalRecord  {
     private int howManyTimesAWeekDoYouExercise; 
     
     
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @MapsId
     private User user; 
    
@@ -293,9 +294,6 @@ public class MedicalRecord  {
 	}
 
 	public void setUser(User user) {
-		if(user.getId() == null) {
-			this.user.setId(this.getId());
-			}
 		this.user = user;
 	}
 
