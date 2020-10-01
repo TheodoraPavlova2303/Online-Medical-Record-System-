@@ -62,8 +62,23 @@ public class MedicalRecord  {
    
 	
  // getters and setters
-	
+    
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+    
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public String getGender() {
 		return gender;
 	}
@@ -272,7 +287,6 @@ public class MedicalRecord  {
 		this.doYouEatFattyFoods = doYouEatFattyFoods;
 	}
 
-
 	public String getDoYouExercise() {
 		return doYouExercise;
 	}
@@ -287,14 +301,6 @@ public class MedicalRecord  {
 
 	public void setHowManyTimesAWeekDoYouExercise(int howManyTimesAWeekDoYouExercise) {
 		this.howManyTimesAWeekDoYouExercise = howManyTimesAWeekDoYouExercise;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public String getFamilyMembersIllnesses() {
@@ -312,14 +318,5 @@ public class MedicalRecord  {
 	public void setNameOfPreviousGP(String nameOfPreviousGP) {
 		this.nameOfPreviousGP = nameOfPreviousGP;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 
 }

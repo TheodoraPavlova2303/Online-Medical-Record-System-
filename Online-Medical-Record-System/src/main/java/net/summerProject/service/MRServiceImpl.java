@@ -14,7 +14,7 @@ public class MRServiceImpl {
 	private MedicalRecordRepository medRecordRepository; 
 
 	
-	public void save(MedicalRecord medRecord) {
+	public void save(MedicalRecord medRecord, User user) {
 		medRecord.setGender(medRecord.getGender());
 		medRecord.setAge(medRecord.getAge());
 		medRecord.setHeight(medRecord.getHeight());
@@ -49,7 +49,8 @@ public class MRServiceImpl {
 		medRecord.setDoYouExercise(medRecord.getDoYouExercise());
 		medRecord.setHowManyTimesAWeekDoYouExercise(medRecord.getHowManyTimesAWeekDoYouExercise());
 		
-	
+	    // medRecord.setUser(user.getId());
+		// medRecord.getUser().setMedicalId(medRecord);
 		medRecordRepository.save(medRecord);
 	}
 }
