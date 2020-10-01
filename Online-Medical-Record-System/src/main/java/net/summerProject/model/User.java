@@ -9,6 +9,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Long id;
 	
 	
@@ -20,8 +21,8 @@ public class User {
     private String dateofbirth;
     
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    private MedicalRecord medicalId;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private MedicalRecord medicalRecord;
     
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -101,18 +102,10 @@ public class User {
         this.roles = roles;
     }
 	public MedicalRecord getMedicalId() {
-		return medicalId;
+		return medicalRecord;
 	}
-	public void setMedicalId(MedicalRecord medicalId) {
-		if(medicalId == null) {
-			if(this.medicalId != null) {
-				this.medicalId.setUser(null);
-			}
-		}
-		else {
-			medicalId.setUser(this);
-		}
-		this.medicalId = medicalId;
+	public void setMedicalId(MedicalRecord medicalRecord) {
+		this.medicalRecord = medicalRecord;
 	}
 	
 	public Set<Doctor> getDoctor() {
