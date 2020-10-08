@@ -14,7 +14,7 @@ public class MRServiceImpl {
 	private MedicalRecordRepository medRecordRepository; 
 
 	
-	public void save(MedicalRecord medRecord, User user) {
+	public void save(MedicalRecord medRecord) {
 		medRecord.setGender(medRecord.getGender());
 		medRecord.setAge(medRecord.getAge());
 		medRecord.setHeight(medRecord.getHeight());

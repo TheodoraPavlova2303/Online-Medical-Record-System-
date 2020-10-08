@@ -1,31 +1,37 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-<html>
-   <head>
-      <body>
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <form id="logoutForm" method="POST" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form>
+    <title>Log in with your account</title>
+    <link href="${contextPath}/resources/css/medicalFormCreate.css" rel="stylesheet">
 
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="${contextPath}/logout">Logout</a></h2>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    </c:if>
-
-</div>
+</head>
+   
+   
+<body>
 
 <div class="mrf">
  
-<form:form method="post" action="${contextPath}/medicalFormCreate" modelAttribute="medicalForm" class="mdform">
+ <form:form method="post" action="${contextPath}/medicalFormCreate" modelAttribute="medicalForm" class="mdform">
  
   <spring:bind path="gender">
     <div class="form-group">
-      <label for="gender">Select your gender:</label>
+      <label for="gender">Select your gender:</label><br>
          <label for="male">Male</label>
            <form:radiobutton path="gender" id="male" name="gender" value="male"></form:radiobutton>
         <label for="female">Female</label>
@@ -159,25 +165,25 @@
     </div>
   </spring:bind>
   
-                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                
   
      <spring:bind path="bloodType">
       <div class="form-group">
         <label for="bloodType">What is your blood type?</label><br>
          <label for="A">A+</label>
-           <form:radiobutton path="bloodType" id="A" name="A" value="A+"></form:radiobutton><br>
+           <form:radiobutton path="bloodType" id="A" name="A" value="A+"></form:radiobutton>
         <label for="A-">A-</label>
            <form:radiobutton path="bloodType" id="AA" name="AA" value="A-"></form:radiobutton><br>
             <label for="B">B+</label>
-           <form:radiobutton path="bloodType" id="B" name="B" value="B+"></form:radiobutton><br>
+           <form:radiobutton path="bloodType" id="B" name="B" value="B+"></form:radiobutton>
         <label for="BB">B-</label>
            <form:radiobutton path="bloodType" id="BB" name="BB" value="B-"></form:radiobutton><br>
             <label for="A">AB+</label>
-           <form:radiobutton path="bloodType" id="A" name="A" value="AB+"></form:radiobutton><br>
+           <form:radiobutton path="bloodType" id="A" name="A" value="AB+"></form:radiobutton>
         <label for="A-">AB-</label>
            <form:radiobutton path="bloodType" id="AA" name="AA" value="AB-"></form:radiobutton><br>
             <label for="B">0+</label>
-           <form:radiobutton path="bloodType" id="B" name="B" value="0+"></form:radiobutton><br>
+           <form:radiobutton path="bloodType" id="B" name="B" value="0+"></form:radiobutton>
         <label for="BB">0-</label>
            <form:radiobutton path="bloodType" id="BB" name="BB" value="0-"></form:radiobutton><br>
             
@@ -251,7 +257,6 @@
   </spring:bind>
     
     
-                                 ///////////////////////////////////////////////////////////// 
                                  
       <spring:bind path="nameOfPreviousMedicalPractice">
       <div class="form-group">
@@ -269,7 +274,7 @@
     </div>
   </spring:bind>
   
-                               /////////////////////////////////////////////////////////////////
+                            
   
        <spring:bind path="doYouSmoke">
       <div class="form-group">
@@ -357,6 +362,5 @@
 </form:form>
 
 </div>
-      </body>
-   </head>
+</body>
 </html>
