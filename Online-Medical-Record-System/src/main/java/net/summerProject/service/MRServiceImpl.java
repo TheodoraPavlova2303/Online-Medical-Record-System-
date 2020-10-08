@@ -49,7 +49,8 @@ public class MRServiceImpl {
 		medRecord.setDoYouExercise(medRecord.getDoYouExercise());
 		medRecord.setHowManyTimesAWeekDoYouExercise(medRecord.getHowManyTimesAWeekDoYouExercise());
 		
-	
+	    // medRecord.setUser(user.getId());
+		// medRecord.getUser().setMedicalId(medRecord);
 		medRecordRepository.save(medRecord);
 	}
 }
