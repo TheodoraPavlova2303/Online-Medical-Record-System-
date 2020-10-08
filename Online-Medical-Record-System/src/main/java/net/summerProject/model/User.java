@@ -121,7 +121,6 @@ public class User {
 		this.appointments = appointments;
 	}
 	public void setUser(MedicalRecord medicalRecord) {
-		// TODO Auto-generated method stub
 		
 	}
 
