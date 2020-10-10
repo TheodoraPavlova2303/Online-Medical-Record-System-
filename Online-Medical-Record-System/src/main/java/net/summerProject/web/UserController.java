@@ -18,18 +18,22 @@ import net.summerProject.validator.UserValidator;
 
 @Controller
 public class UserController {
+	
+	private static final String User_Name = "test"; 
+	
     @Autowired
     private UserService userService;
-
+    
+    @Autowired
+    private MRServiceImpl mrServiceImpl; 
+    
     @Autowired
     private UserValidator userValidator;
     
     @Autowired
     private MedicalRecordValidator mrValidator;
     
-    @Autowired
-    private MRServiceImpl mrServiceImpl; 
-
+   
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
@@ -38,11 +42,12 @@ public class UserController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
-        userValidator.validate(userForm, bindingResult);
+    User_Name = userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return "registration";
         }
+     //   model.addAttribute(User_Name, userService.findById(id));
         userService.save(userForm);
         return "redirect:/welcome";
     }
@@ -56,7 +61,7 @@ public class UserController {
     @RequestMapping(value = "/medicalFormCreate", method = RequestMethod.POST)
     public String welcomePost(@ModelAttribute("medicalForm") MedicalRecord medicalForm, BindingResult bindingResult, Model model) {
 	mrValidator.validate(medicalForm, bindingResult);
-	mrServiceImpl.save(medicalForm);
+	mrServiceImpl.save(medicalForm, userService.findByUsername((String)model.asMap().get(User_Name)));
     	if(bindingResult.hasErrors() ) {
     		return "medicalFormCreate"; 
     	}
@@ -78,7 +83,6 @@ public class UserController {
 
         return "login";
     }
-
     
     @RequestMapping(value = {"/about"}, method = RequestMethod.GET)
     public String about(Model model) { 

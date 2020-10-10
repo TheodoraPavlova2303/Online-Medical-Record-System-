@@ -9,12 +9,14 @@ import net.summerProject.repository.MedicalRecordRepository;
 import net.summerProject.repository.UserRepository;
 
 @Service
-public class MRServiceImpl {
+public class MRServiceImpl implements MRService {
+	@Autowired
+	private UserRepository userRepository; 
 	@Autowired
 	private MedicalRecordRepository medRecordRepository; 
-
 	
-	public void save(MedicalRecord medRecord) {
+	public void save(MedicalRecord medRecord, User user1) {
+	  
 		medRecord.setGender(medRecord.getGender());
 		medRecord.setAge(medRecord.getAge());
 		medRecord.setHeight(medRecord.getHeight());
@@ -48,8 +50,9 @@ public class MRServiceImpl {
 		medRecord.setDoYouEatFattyFoods(medRecord.getDoYouEatFattyFoods());
 		medRecord.setDoYouExercise(medRecord.getDoYouExercise());
 		medRecord.setHowManyTimesAWeekDoYouExercise(medRecord.getHowManyTimesAWeekDoYouExercise());
-		
-	
+		medRecord.setUser(user1);
+	    user1.setMedicalRecord(medRecord);
+	    userRepository.save(user1);
 		medRecordRepository.save(medRecord);
 	}
 }

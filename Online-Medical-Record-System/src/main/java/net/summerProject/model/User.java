@@ -12,16 +12,18 @@ public class User {
 	@Column(name = "id")
 	private Long id;
 	
+	private String username;
 	
-    private String username;
+	private String firstName;
     private String lastName;
     private String password;
     private String passwordConfirm;
     private String email;
     private String dateofbirth;
-    
+   
+    //Relational Mapping for the database tables
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.MERGE)
     private MedicalRecord medicalRecord;
     
     @ManyToMany
@@ -40,7 +42,8 @@ public class User {
     
     public Long getId() {
        return id;
-     }
+    }
+    
     public void setId(Long id) {
         this.id = id;
     }
@@ -51,6 +54,14 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
@@ -101,27 +112,29 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-	public MedicalRecord getMedicalId() {
+   
+	public MedicalRecord getMedicalRecord() {
 		return medicalRecord;
 	}
-	public void setMedicalId(MedicalRecord medicalRecord) {
+	
+	public void setMedicalRecord(MedicalRecord medicalRecord) {
 		this.medicalRecord = medicalRecord;
 	}
 	
 	public Set<Doctor> getDoctor() {
 		return doctor;
 	}
+	
 	public void setDoctor(Set<Doctor> doctor) {
 		this.doctor = doctor;
 	}
+	
 	public Set<Appointment> getAppointments() {
 		return appointments;
 	}
+	
 	public void setAppointments(Set<Appointment> appointments) {
 		this.appointments = appointments;
-	}
-	public void setUser(MedicalRecord medicalRecord) {
-		
 	}
 
 }
