@@ -19,8 +19,7 @@ public class UserValidator implements Validator {
         return User.class.equals(aClass);
     }
 
-    @Override
-    public void validate(Object o, Errors errors) {
+    public void validate(Object o, Errors errors) { //return String - username, if everything is fine. 
         User user = (User) o;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
@@ -30,6 +29,12 @@ public class UserValidator implements Validator {
         if (userService.findByUsername(user.getUsername()) != null) {
             errors.rejectValue("username", "Duplicate.userForm.username");
         }
+        
+        ValidationUtils.rejectIfEmpty(errors, "firstName", "NotEmpty");
+        if (user.getFirstName().length() < 1 || user.getFirstName().length() > 32) {
+            errors.rejectValue("firstName", "Size.userForm.firstName");
+        }
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "NotEmpty");
         if (user.getLastName().length() < 1 || user.getLastName().length() > 32) {
             errors.rejectValue("lastName", "Size.userForm.lastName");
@@ -39,10 +44,14 @@ public class UserValidator implements Validator {
         if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
         }
+        if (userService.findByPassword(user.getPassword()) != null) {
+            errors.rejectValue("password", "Duplicate.userForm.password");
+        }
 
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+        
     }
 }

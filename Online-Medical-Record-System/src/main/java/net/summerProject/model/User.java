@@ -3,27 +3,27 @@ package net.summerProject.model;
 import javax.persistence.*;
 import java.util.Set;
 
-
 @Entity
 @Table(name = "userProfile")
 public class User {
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
 	
+	private String username;
 	
-    private String username;
+	private String firstName;
     private String lastName;
     private String password;
     private String passwordConfirm;
     private String email;
     private String dateofbirth;
-    
+   
+    //Relational Mapping for the database tables
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.MERGE)
     private MedicalRecord medicalRecord;
     
     @ManyToMany
@@ -43,73 +43,98 @@ public class User {
     public Long getId() {
        return id;
     }
+    
     public void setId(Long id) {
         this.id = id;
     }
 
-	public MedicalRecord getMedicalRecord() {
-		return medicalRecord;
-	}
-	public void setMedicalRecord(MedicalRecord medicalRecord) {
-		this.medicalRecord = medicalRecord;
-	}
-	
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
+
     @Transient
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
+
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
     }
+
     public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getDateofbirth() {
 		return dateofbirth;
 	}
+
 	public void setDateofbirth(String dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
+
     public Set<Role> getRoles() {
         return roles;
     }
+    
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+   
+	public MedicalRecord getMedicalRecord() {
+		return medicalRecord;
+	}
+	
+	public void setMedicalRecord(MedicalRecord medicalRecord) {
+		this.medicalRecord = medicalRecord;
+	}
+	
 	public Set<Doctor> getDoctor() {
 		return doctor;
 	}
+	
 	public void setDoctor(Set<Doctor> doctor) {
 		this.doctor = doctor;
 	}
+	
 	public Set<Appointment> getAppointments() {
 		return appointments;
 	}
+	
 	public void setAppointments(Set<Appointment> appointments) {
 		this.appointments = appointments;
-	}
-	public void setUser(MedicalRecord medicalRecord) {
 	}
 
 }
