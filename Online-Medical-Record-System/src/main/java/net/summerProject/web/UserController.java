@@ -42,12 +42,12 @@ public class UserController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
-    User_Name = userValidator.validate(userForm, bindingResult);
+    String userName = userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return "registration";
         }
-     //   model.addAttribute(User_Name, userService.findById(id));
+        model.addAttribute(User_Name, userName);
         userService.save(userForm);
         return "redirect:/welcome";
     }
