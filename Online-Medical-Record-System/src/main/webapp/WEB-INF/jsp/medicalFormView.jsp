@@ -33,9 +33,8 @@ ResultSet resultSet = null;
 <tr>
 
 </tr>
-<tr bgcolor="#A52A2A">
-<td><b>id</b></td>
-<td><b>First name</b></td>
+<tr bgcolor="#4197F0">
+
 <td><b>Date of birth</b></td>
 <td><b>Gender</b></td>
 <td><b>Age</b></td>
@@ -75,15 +74,13 @@ ResultSet resultSet = null;
 try{ 
 connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
 statement=connection.createStatement();
-String sql ="SELECT * medical_record";
-
+String sql ="SELECT u.dateofbirth, m.gender, m.age, m.height, m.weight, m.address FROM medical_record as m, user_profile as u WHERE u.id = m.user_id AND u.username = user1";
 resultSet = statement.executeQuery(sql);
+
 while(resultSet.next()){
 %>
 <tr bgcolor="#4197F0">
 
-<td><%=resultSet.getString("id") %></td>
-<td><%=resultSet.getString("username") %></td>
 <td><%=resultSet.getString("dateofbirth") %></td>
 <td><%=resultSet.getString("gender") %></td>
 <td><%=resultSet.getString("age") %></td>

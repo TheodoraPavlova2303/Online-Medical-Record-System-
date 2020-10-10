@@ -1,6 +1,10 @@
 package net.summerProject.web;
 
 
+import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +22,6 @@ import net.summerProject.validator.UserValidator;
 
 @Controller
 public class UserController {
-	
-	private static final String User_Name = "test"; 
 	
     @Autowired
     private UserService userService;
@@ -42,27 +44,27 @@ public class UserController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
-    String userName = userValidator.validate(userForm, bindingResult);
+    userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return "registration";
         }
-        model.addAttribute(User_Name, userName);
         userService.save(userForm);
         return "redirect:/welcome";
     }
     
-        @RequestMapping(value = {"/medicalFormCreate"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/medicalFormCreate"}, method = RequestMethod.GET)
     public String welcomeGet(Model model) {
     	model.addAttribute("medicalForm", new MedicalRecord());
         return "medicalFormCreate";
     }
     
     @RequestMapping(value = "/medicalFormCreate", method = RequestMethod.POST)
-    public String welcomePost(@ModelAttribute("medicalForm") MedicalRecord medicalForm, BindingResult bindingResult, Model model) {
+    public String welcomePost(@ModelAttribute("medicalForm") MedicalRecord medicalForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
 	mrValidator.validate(medicalForm, bindingResult);
-	mrServiceImpl.save(medicalForm, userService.findByUsername((String)model.asMap().get(User_Name)));
-    	if(bindingResult.hasErrors() ) {
+	mrServiceImpl.save(medicalForm, userService.findByUsername(request.getUserPrincipal().getName()));
+    	
+	if(bindingResult.hasErrors() ) {
     		return "medicalFormCreate"; 
     	}
     	return "redirect:/success";
@@ -97,11 +99,6 @@ public class UserController {
     @RequestMapping(value = {"/medicalFormView"}, method = RequestMethod.GET)
     public String medicalFormView(Model model) {
     	return "medicalFormView";
-    }
-    
-    @RequestMapping(value = {"/appointmentBooking"}, method = RequestMethod.GET)
-    public String appointmentBooking(Model model) {
-    	return "appointmentBooking";
     }
     
 }
