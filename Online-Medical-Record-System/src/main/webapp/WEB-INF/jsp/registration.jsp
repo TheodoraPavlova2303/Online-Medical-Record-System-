@@ -51,7 +51,8 @@
 			<div class="card-header">
 			    <h2 class="form-signin-heading">Create your account</h2>
 			</div>
-			<div class="card-body">
+		<div class="card-body">
+		
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
         
         <spring:bind path="username">
@@ -93,27 +94,28 @@
             </div>
         </spring:bind>
         
-           <spring:bind path="email"> 
+         <spring:bind path="email"> 
            <div class="form-group ${status.error ? 'has-error' : ''}">
-           <form:input type="email" path="email" class="email" placeholder="E-mail address"></form:input>
-           <form:errors path="email"></form:errors>
+               <form:input type="email" path="email" class="email" placeholder="E-mail address"></form:input>
+               <form:errors path="email"></form:errors>
            </div>
         </spring:bind>
         
         <spring:bind path="dateofbirth"> 
            <div class="form-group ${status.error ? 'has-error' : ''}">
-           <form:input type="DOB" path="dateofbirth" class="DOB" placeholder="DD/MM/YEAR"  autofocus="true"></form:input>
-           <form:errors path="dateofbirth"></form:errors>
+               <form:input type="DOB" path="dateofbirth" class="DOB" placeholder="DD/MM/YEAR"  autofocus="true"></form:input>
+               <form:errors path="dateofbirth"></form:errors>
            </div>
         </spring:bind>
         
         <div class="card-footer">
-     <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      
     </div>
     </form:form>
-   </div>
-</div>
-</div>
-</div>
+    </div>
+    </div>
+  </div>
+  </div>
 </body>
 </html>

@@ -2,16 +2,13 @@ package net.summerProject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import net.summerProject.model.MedicalRecord;
 import net.summerProject.model.User;
 import net.summerProject.repository.MedicalRecordRepository;
-import net.summerProject.repository.UserRepository;
+
 
 @Service
-public class MRServiceImpl implements MRService {
-	@Autowired
-	private UserRepository userRepository; 
+public class MRServiceImpl implements MRService { 
 	@Autowired
 	private MedicalRecordRepository medRecordRepository; 
 	
@@ -52,8 +49,6 @@ public class MRServiceImpl implements MRService {
 		medRecord.setHowManyTimesAWeekDoYouExercise(medRecord.getHowManyTimesAWeekDoYouExercise());
 		medRecord.setUser(user1);
 	    user1.setMedicalRecord(medRecord);
-	    
-	    userRepository.save(user1);
 		medRecordRepository.save(medRecord);
 	}
 }

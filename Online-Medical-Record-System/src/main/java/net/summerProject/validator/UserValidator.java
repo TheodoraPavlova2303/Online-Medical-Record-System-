@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-
 import net.summerProject.model.User;
 import net.summerProject.service.UserService;
 
@@ -19,7 +18,7 @@ public class UserValidator implements Validator {
         return User.class.equals(aClass);
     }
 
-    public void validate(Object o, Errors errors) { //return String - username, if everything is fine. 
+    public void validate(Object o, Errors errors) { 
         User user = (User) o;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
@@ -44,6 +43,7 @@ public class UserValidator implements Validator {
         if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
         }
+        
         if (userService.findByPassword(user.getPassword()) != null) {
             errors.rejectValue("password", "Duplicate.userForm.password");
         }
@@ -51,7 +51,11 @@ public class UserValidator implements Validator {
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
+        
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+        if (userService.findByEmail(user.getEmail()) != null) {
+            errors.rejectValue("email", "Duplicate.userForm.email");
+        }
         
     }
 }

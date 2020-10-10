@@ -14,10 +14,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
    
-    <title>Welcome page</title>
+    <title>Welcome to your account</title>
+    
     <link href="${contextPath}/resources/css/welcome.css" rel="stylesheet">
-    
-    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     
@@ -25,7 +24,7 @@
    
 <body>
   <div class="container">
-    <div class="wrapper">
+      <div class="wrapper">
          <header>
             <nav>
                <div class="menu-icon">
@@ -42,6 +41,7 @@
                            <h3>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="${contextPath}/login">Logout</a></h3>
                     </c:if>
               </div>
+              
                <div class="menu">
                   <ul>
                      <li><a href="${contextPath}/about">About</a></li>
@@ -57,11 +57,10 @@
 
          <div class ="main-buttons">
                <a href="${contextPath}/medicalFormCreate" class="button">Create your medical form</a>
-               <a href="${contextPath}/medicalFormView" class="button">View your medical record</a>  
-               <a href="${contextPath}/appointmentBooking" class="button">Book an appointment</a> 
+               <a href="${contextPath}/medicalFormView" class="button">View your medical record</a>   
          </div>
          
-         </div>
-      </body>
+       </div>
+    </body>
 </html>
 
