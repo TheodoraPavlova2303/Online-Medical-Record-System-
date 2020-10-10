@@ -23,9 +23,8 @@
 </head>
 
 <body>
-<div class="container">
-
-<div class="wrapper">
+   <div class="container">
+     <div class="wrapper">
          <header>
             <nav>
                <div class="menu-icon">
@@ -44,7 +43,7 @@
                </div>
             </nav>
          </header>
-         </div>
+     </div>
          
 	<div class="d-flex justify-content-right h-100">
 		<div class="card">

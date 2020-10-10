@@ -1,0 +1,14 @@
+
+
+form {
+  position : relative;
+  width  : 740px;
+  height : 498px;
+  margin : 150px;
+  box-sizing: content-box;
+  background: #e6faff;
+  display  : grid;
+  grid-gap : 30px;
+  grid-template-columns : repeat(2, 1fr);
+  grid-template-rows    : 3em 3em 14em 3em 3em 3em 10em 5em 3em 3em 3em;
+}

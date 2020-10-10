@@ -6,4 +6,3 @@ import net.summerProject.model.User;
 public interface MRService {
 	void save(MedicalRecord md, User user);
 }
-

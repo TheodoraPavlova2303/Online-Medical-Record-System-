@@ -52,6 +52,7 @@ public class MRServiceImpl implements MRService {
 		medRecord.setHowManyTimesAWeekDoYouExercise(medRecord.getHowManyTimesAWeekDoYouExercise());
 		medRecord.setUser(user1);
 	    user1.setMedicalRecord(medRecord);
+	    
 	    userRepository.save(user1);
 		medRecordRepository.save(medRecord);
 	}

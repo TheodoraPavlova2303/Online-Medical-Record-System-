@@ -9,4 +9,4 @@ public interface UserService {
     User findByUsername(String username);
     Optional<User> findById(Long id);
     User findByPassword(String password);
-}
+} 
