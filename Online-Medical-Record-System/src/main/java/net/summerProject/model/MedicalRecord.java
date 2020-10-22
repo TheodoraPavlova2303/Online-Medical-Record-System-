@@ -1,6 +1,5 @@
 package net.summerProject.model;
 
-
 import javax.persistence.*;
 
 @Entity
