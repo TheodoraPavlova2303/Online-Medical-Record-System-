@@ -15,6 +15,8 @@
     <meta name="author" content="">
 
     <title>Registration</title>
+    
+    <!-- The reference for the css page -->
     <link href="${contextPath}/resources/css/registration.css" rel="stylesheet">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -27,6 +29,9 @@
 <div class="container">
     <div class="wrapper">
          <header>
+         <!-- The navigation bar settings -->
+         <!-- The template used for the navbar is from: 
+          https://bootsnipp.com/snippets/kl8Q3 -->
             <nav>
                <div class="menu-icon">
                   <i class="fa fa-bars fa-2x"></i>
@@ -36,10 +41,7 @@
                </div>
                <div class="menu">
                   <ul>
-                     <li><a href="#">Home</a></li>
-                     <li><a href="${contextPath}/about">About</a></li>
-                     <li><a href="#">Practices</a></li>
-                     <li><a href="#">Contact</a></li>
+                     <li><a href="${contextPath}/login">Home</a></li>
                   </ul>
                </div>
             </nav>
@@ -53,10 +55,12 @@
 			</div>
 		<div class="card-body">
 		
+	<!-- The registration POST form -->
+		
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
         
         <spring:bind path="username">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
+            <div class="form-group ${status.error ? 'has-error' : ''}">   <!-- Validation checking for errors form in all fields-->
                 <form:input type="text" path="username" class="form-control" placeholder="User Name"
                             autofocus="true"></form:input>
                 <form:errors path="username"></form:errors>

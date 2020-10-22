@@ -22,6 +22,8 @@ public class Appointment {
 	private Time time; 
 	private String description; 
 	
+	//relational mapping between the Appointment entity and the Doctor and User entities
+	
 	@ManyToOne
 	@JoinColumn(name = "doctor_id")
 	private Doctor doctor;

@@ -12,7 +12,7 @@ public class User {
 	@Column(name = "id")
 	private Long id;
 	
-	private String username;
+	private String username; // username is the unique identifier for the user
 	
 	private String firstName;
     private String lastName;
@@ -21,14 +21,10 @@ public class User {
     private String email;
     private String dateofbirth;
    
-    //Relational Mapping for the database tables
+    //Relational Mapping between User entity and the Medical Record and Doctor entity 
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.MERGE)
     private MedicalRecord medicalRecord;
-    
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles; 
     
     @ManyToMany
     @JoinTable(name = "user_doctor", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "doctor_id"))
@@ -104,14 +100,6 @@ public class User {
 	public void setDateofbirth(String dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-    
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
    
 	public MedicalRecord getMedicalRecord() {
 		return medicalRecord;

@@ -12,6 +12,9 @@ public class DoctorServiceImpl {
 	@Autowired
 	private DoctorRepository doctorRepository;
 	
+	//this method saves the doctor's information 
+	//when adding a new doctor (not implemented in final stage)
+	
 	public void save(Doctor doc) {
 		doc.setFirstName(doc.getFirstName());
 		doc.setLastName(doc.getLastName());

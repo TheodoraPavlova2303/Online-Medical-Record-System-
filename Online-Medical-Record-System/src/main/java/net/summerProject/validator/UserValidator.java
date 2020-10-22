@@ -8,6 +8,9 @@ import org.springframework.validation.Validator;
 import net.summerProject.model.User;
 import net.summerProject.service.UserService;
 
+//this source is used to configure the Spring Security authentication and validation - 
+//https://github.com/RameshMF/spring-boot-tutorial/tree/master/login-registration-springboot-hibernate-jsp-auth 
+
 @Component
 public class UserValidator implements Validator {
     @Autowired

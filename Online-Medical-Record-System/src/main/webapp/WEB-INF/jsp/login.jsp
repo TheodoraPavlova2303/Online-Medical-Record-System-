@@ -4,6 +4,9 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+<!-- The template used for the navbar is from: 
+https://bootsnipp.com/snippets/kl8Q3 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +18,8 @@
     <meta name="author" content="">
 
     <title>Log in with your account</title>
+    
+    <!-- The reference for the css page -->
     <link href="${contextPath}/resources/css/login.css" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -26,6 +31,9 @@
    <div class="container">
      <div class="wrapper">
          <header>
+         <!-- The navigation bar settings -->
+         <!-- The template used for the navbar is from: 
+               https://bootsnipp.com/snippets/kl8Q3 -->
             <nav>
                <div class="menu-icon">
                   <i class="fa fa-bars fa-2x"></i>
@@ -36,15 +44,15 @@
                <div class="menu">
                   <ul>
                      <li><a href="${contextPath}/login">Home</a></li>
-                     <li><a href="${contextPath}/about">About</a></li>
-                     <li><a href="#">Practices</a></li>
-                     <li><a href="#">Contact</a></li>
                   </ul>
                </div>
             </nav>
          </header>
      </div>
          
+         
+   <!-- Source of login card is: https://bootsnipp.com/snippets/vl4R7 -->
+   
 	<div class="d-flex justify-content-right h-100">
 		<div class="card">
 			<div class="card-header">
@@ -52,9 +60,11 @@
 			</div>
 			<div class="card-body">
 			
+	<!-- The login POST form -->
+			
     <form method="POST" action="${contextPath}/login" class="form-signin">
 		   
-        <div class="input-group form-group ${error != null ? 'has-error' : ''}">
+        <div class="input-group form-group ${error != null ? 'has-error' : ''}"> <!-- Validation checking for error -->
             <div class="input-group-prepend"> 
             <span class="input-group-text"><i class="fas fa-user"></i>${message}</span>
             </div>

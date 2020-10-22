@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
  
-#thepage
+#thewholepage
+
 html,body{
 background-image: url('/resources/images/background_final.png'); !important;
 background-size: 100% 100%;
@@ -12,6 +13,7 @@ font-family: 'Numans', sans-serif;
 height: 100%;
 align-content: center;
 }
+
 
 .card{
 height: 350px;
@@ -69,7 +71,8 @@ color: light-blue;
 margin-left: 4px;
 }
 
-#thenav bar  
+##source-https://bootsnipp.com/snippets/kl8Q3
+#the-nav-bar
 .content {
       width: 94%;
       margin: 4em auto;

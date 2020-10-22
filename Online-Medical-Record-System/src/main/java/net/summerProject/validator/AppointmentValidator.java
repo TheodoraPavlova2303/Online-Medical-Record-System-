@@ -15,6 +15,9 @@ public class AppointmentValidator implements Validator {
 		return Appointment.class.equals(clazz);
 	}
 	
+	// this method validates the appointment details 
+	// entered by the user (not implemented in final stage)
+	
 	@Override
 	public void validate(Object target, Errors errors) {
 		Appointment appoint = (Appointment) target;

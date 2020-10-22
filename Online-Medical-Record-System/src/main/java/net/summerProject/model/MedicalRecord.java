@@ -11,23 +11,23 @@ public class MedicalRecord  {
 	private Long id;
     
 	
-    //personal information 
+    //personal information variables
     
-    private String gender; //special 
+    private String gender; 
     private int age;
 	private double height; 
 	private double weight;
-	private String address; //special 
+	private String address; 
 	private String phoneNumber;
-	private String countryOfOrigin; //special 
+	private String countryOfOrigin; 
 	private String occupation;
-	private String maritalStatus;   //special 
+	private String maritalStatus;  
 	private String nextOfKinName; 
 	private String nextOfKinRelationship; 
 	private String nextOfKinNumber; 
 	
 	
-	// further medical information 
+	// further medical information variables
 	private String bloodType; 
 	private String chronicIllnesses;
 	private String pastImmunisations;
@@ -38,22 +38,23 @@ public class MedicalRecord  {
     private String pastMajorOperations; 
     private String currentMedication; 
     
-    // previous medical history if any
+    // previous medical history variables
 	
 	private String nameOfPreviousGP; 
 	private String nameOfPreviousMedicalPractice;
 	
 	
-    //smoke/alcohol/diet/exercise habits 
+    //lifestyle habits variables 
     
-    private String doYouSmoke; //special
-    private int howManyCigarettesPerDay; //optional
+    private String doYouSmoke; 
+    private int howManyCigarettesPerDay; 
     private String doYouDrink; 
     private int howManyUnitsPerWeekDoYouDrink;
     private String doYouEatFattyFoods;
     private String doYouExercise; 
     private int howManyTimesAWeekDoYouExercise; 
     
+    //relational mapping between the Medical Record entity and the User entity 
     
     @OneToOne
     @MapsId

@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
+#thepage
 html,body{
-background-image: url('/resources/images/background_final.png'); !important;
-background-size: 100% 100%;
-background-repeat: no-repeat;
 font-family: 'Numans', sans-serif;
 }
 
+
+.container{
+background-image: url('/resources/images/background_final.png'); !important;
+background-size: 100% 100%;
+background-repeat: no-repeat;
+height: 100%;
+align-content: center;
+}
 
 .main-buttons {
   position:absolute;
@@ -26,7 +32,8 @@ font-family: 'Numans', sans-serif;
   margin-left:90px;
 }
 
-#the navbar 
+
+#thenavbar 
 
 .content {
       width: 94%;

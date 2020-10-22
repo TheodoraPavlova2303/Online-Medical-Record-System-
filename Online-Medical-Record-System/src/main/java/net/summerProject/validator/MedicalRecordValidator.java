@@ -14,10 +14,13 @@ public class MedicalRecordValidator implements Validator {
 	public boolean supports(Class<?> clazz) {
 		return MedicalRecord.class.equals(clazz);
 	}
+	
+	// this method validates if the medical record's fields which are required are not empty
+	
    @Override
 	public void validate(Object target, Errors errors) {
 		MedicalRecord medicalRecord = (MedicalRecord) target;
-		
+	
    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "NotEmpty");
    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "height", "NotEmpty");
    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "age", "NotEmpty");
@@ -29,6 +32,18 @@ public class MedicalRecordValidator implements Validator {
    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nextOfKinRelationship", "NotEmpty");
    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nextOfKinNumber", "NotEmpty");
    
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "chronicIllnesses", "NotEmpty");
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "pastImmunisations", "NotEmpty");
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "allergies", "NotEmpty");
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "familyMembersIllnesses", "NotEmpty");
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "disabilities", "NotEmpty");
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "pastMajorOperations", "NotEmpty");
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "currentMedication", "NotEmpty");
+   
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "doYouSmoke", "NotEmpty");
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "doYouDrink", "NotEmpty");
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "doYouEatFattyFoods", "NotEmpty");
+   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "doYouExercise", "NotEmpty");
+   
    }
-
 }
