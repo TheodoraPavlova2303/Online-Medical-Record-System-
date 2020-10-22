@@ -15,6 +15,8 @@
     <meta name="author" content="">
 
     <title>Log in with your account</title>
+    
+    <!-- The reference for the css page -->
     <link href="${contextPath}/resources/css/medicalFormCreate.css" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -25,7 +27,43 @@
    
 <body>
 
+ <div class="container">
+      <div class="wrapper">
+         <header>
+         <!-- The navigation bar settings -->
+         <!-- The template used for the navbar is from: 
+             https://bootsnipp.com/snippets/kl8Q3 -->
+            <nav>
+               <div class="menu-icon">
+                  <i class="fa fa-bars fa-2x"></i>
+               </div>
+               <div class="logo">
+                  <img src="${contextPath}/resources/images/logo.png">
+               </div>
+               <div class="nav-text">
+                    <c:if test="${pageContext.request.userPrincipal.name != null}">
+                       <form id="logoutForm" method="POST" action="${contextPath}/login">
+                          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                       </form>
+                         <div class="menu">
+                             <ul>
+                                 <li><h4>Welcome ${pageContext.request.userPrincipal.name}</h4></li>
+                                 <li><a href="${contextPath}/welcome">Dashboard</a></li>
+                                 <li><a href="${contextPath}/login">Logout</a></li>
+                             </ul>
+                          </div>
+                          
+                    </c:if>
+              </div>
+            </nav>
+         </header>
+    </div>
+ 
+
 <div class="mrf">
+
+<!-- Create Medical Record POST form with all variables Medical Record form; 
+     most fields have a validation erro check -->
  
  <form:form method="post" action="${contextPath}/medicalFormCreate" modelAttribute="medicalForm" class="mdform">
  
@@ -354,13 +392,10 @@
     </div>
   </spring:bind>
   
-  
-  
-  
   <form:button class="btn btn-lg btn-primary btn-block" type="submit">Submit</form:button>
      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
 </form:form>
-
+</div>
 </div>
 </body>
 </html>

@@ -26,6 +26,8 @@ public class Doctor {
 	private String phoneNumber; 
 	private String practice; 
 	
+	//relational mapping between the Doctor entity and the Appointment and User entities
+	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "doctor")
 	private Set<Appointment> appointments;
 	

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
+#the_page
+
 html,body{
 background-image: url('/resources/images/background_final.png'); !important;
 background-size: 100% 100%;
@@ -19,7 +21,9 @@ background-color: #F8F8F8; !important;
 .card-header h3{
 color: black;
 }
-#thenav bar  
+
+
+#thenavbar  
 .content {
       width: 94%;
       margin: 4em auto;

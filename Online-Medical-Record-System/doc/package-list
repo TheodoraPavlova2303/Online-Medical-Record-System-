@@ -1,0 +1,7 @@
+net.summerProject
+net.summerProject.config
+net.summerProject.model
+net.summerProject.repository
+net.summerProject.service
+net.summerProject.validator
+net.summerProject.web

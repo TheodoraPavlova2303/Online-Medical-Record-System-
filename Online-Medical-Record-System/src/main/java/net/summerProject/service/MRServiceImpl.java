@@ -12,6 +12,8 @@ public class MRServiceImpl implements MRService {
 	@Autowired
 	private MedicalRecordRepository medRecordRepository; 
 	
+	//this method saves the medical record information filled by the user
+	
 	public void save(MedicalRecord medRecord, User user1) {
 	  
 		medRecord.setGender(medRecord.getGender());

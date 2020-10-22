@@ -5,6 +5,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+<!-- H2 Database connection imports and parameters-->
+<!-- The template for the creating of the database connection comes from this website
+ https://www.roseindia.net/jsp/how-to-retrieve-data-from-database-in-jsp.shtml -->
+
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -12,11 +16,12 @@
 
 <%
 String id = request.getParameter("mrId");
-String driverName = "org.postgresql.Driver";
-String connectionUrl = "jdbc:postgresql://localhost:5432/";
-String dbName = "medical";
-String userId = "postgres";
-String password = "230394TPp";
+String driverName = "org.h2.Driver";
+String connectionUrl = "jdbc:h2:~/medical-record-database;DB_CLOSE_DELAY=-1";
+String dbName = "medical-record-database";
+String userId = "sa";
+String password = "";
+
 
 try {
 Class.forName(driverName);
@@ -29,6 +34,8 @@ Statement statement = null;
 ResultSet resultSet = null;
 %>
 <h2 align="center"><font><strong>Medical record data of ${pageContext.request.userPrincipal.name}</strong></font></h2>
+
+<!-- The table which holds all attributes and the values of the Medical Record -->
 <table align="center" cellpadding="5" cellspacing="5" border="1">
 <tr>
 
@@ -70,14 +77,17 @@ ResultSet resultSet = null;
 <td><b>Do you exercise?</b></td>
 <td><b>Exercise per week</b></td>
 </tr>
+
+<!-- The reference for the css page -->
 <%
 try{ 
-connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
+connection = DriverManager.getConnection(connectionUrl+dbName, userId, password); // establishing connection with H2 Database
 statement=connection.createStatement();
-String sql ="SELECT u.dateofbirth, m.gender, m.age, m.height, m.weight, m.address FROM medical_record as m, user_profile as u WHERE u.id = m.user_id AND u.username = user1";
-resultSet = statement.executeQuery(sql);
+// SQL statement which retrieves data from User and Medical Record entities 
+String sql ="SELECT u.dateofbirth, m.gender, m.age, m.height, m.weight, m.address FROM medical_record as m, user_profile as u WHERE u.id = m.user_id AND u.username = request.getPrincipal";
+resultSet = statement.executeQuery(sql); // the retrieves values of the SQL quesry are put into a ResultSet
 
-while(resultSet.next()){
+while(resultSet.next()){ //iterates on the REesultSet values and prints them on the jsp page 
 %>
 <tr bgcolor="#4197F0">
 

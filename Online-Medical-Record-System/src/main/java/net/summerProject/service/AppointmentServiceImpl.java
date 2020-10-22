@@ -12,6 +12,8 @@ public class AppointmentServiceImpl {
 	@Autowired
 	private AppointmentRepository appointRepository; 
 	
+	//this method save the appointment set by the user (not implemented in the final stage) 
+	
 	public void save(Appointment appoint) {
 		appoint.setDate(appoint.getDate());
 		appoint.setTime(appoint.getTime());
